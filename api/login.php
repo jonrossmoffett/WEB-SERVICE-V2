@@ -49,7 +49,7 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
             $payload = [
                 'iat' => time(),
                 'iss' => 'localhost',
-                'exp' => time() + (60 * 60 * 24),
+                'exp' => time() + (60 * 2),
                 'userId' => $user['id']
             ];
             $token = JWT::encode($payload,SECRETE_KEY);
