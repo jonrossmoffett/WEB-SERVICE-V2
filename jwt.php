@@ -22,6 +22,7 @@ class JWT
      * account for clock skew.
      */
     public static $leeway = 0;
+    public $validator;
     /**
      * Allow the current timestamp to be specified.
      * Useful for fixing a value within unit testing.
@@ -52,8 +53,12 @@ class JWT
      * @uses jsonDecode
      * @uses urlsafeB64Decode
      */
+
+
     public static function decode($jwt, $key, array $allowed_algs = array())
     {
+        $validator = new Validator;
+
         $timestamp = is_null(static::$timestamp) ? time() : static::$timestamp;
         if (empty($key)) {
             throw new Exception('Key may not be empty');
@@ -93,7 +98,8 @@ class JWT
         }
         // Check the signature
         if (!static::verify("$headb64.$bodyb64", $sig, $key, $header->alg)) {
-            throw new Exception('Signature verification failed');
+            //throw new Exception('Signature verification failed');
+            $validator->response(401,"signature verification failed");
         }
         // Check if the nbf if it is defined. This is the time that the
         // token can actually be used. If it's not yet that time, abort.
@@ -112,7 +118,8 @@ class JWT
         }
         // Check if this token has expired.
         if (isset($payload->exp) && ($timestamp - static::$leeway) >= $payload->exp) {
-            throw new Exception('Expired token');   
+            $validator->response(401,"Expired token");
+            //throw new Exception('Expired token');   
         }
         return $payload;
     }

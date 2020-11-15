@@ -1,17 +1,18 @@
 <?php
 include_once('database.php');
 include_once('constants.php');
-
+include_once('validator.php');
 
 class AuthTokenChecker{
 
     public $dbConn;
-    
+    public $validator;
+
     public function __construct()
     {
         $db = new database;
         $this->dbConn = $db->connect();
-        
+        $this->validator = new Validator;
     }
 
     public function validateToken($token) {
@@ -22,12 +23,13 @@ class AuthTokenChecker{
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if(!is_array($user)) {
-                echo "user not in database";exit;
+                $this->validator->response(401,'User not found in db');
             }
 
             return $payload->userId;
         } catch (Exception $e) {
-            echo $e->getMessage();exit;
+            $this->validator->response(401,'Exeption occured');
+            //echo $e->getMessage();exit;
         }
     }
 
