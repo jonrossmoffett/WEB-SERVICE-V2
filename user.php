@@ -2,7 +2,7 @@
 
 include_once('validator.php');
 include_once('jwt.php');
-
+include_once('customResponseCode.php');
 
 	class User {
 		private $id;
