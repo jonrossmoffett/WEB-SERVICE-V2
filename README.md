@@ -1,11 +1,6 @@
 # WEB-SERVICE-V2
 This is the current version being used for the PWA
-
-Documentation is still being written for version two. And the script files for tesing the API are missing. Minor changes may occur within the next two days
-
-i have fully documented and written script files for V1 avaliable at
-https://github.com/jonrossmoffett/WEB-SERVICE-V1
-
+<br>
 
 
 other git links for projects.
@@ -25,7 +20,7 @@ https://github.com/jonrossmoffett/tafe_backend
 <br>
 other live deployment links
 <br>
-https://phpwebservice.herokuapp.com/ (might be modified slighly)
+https://phpwebservice.herokuapp.com/ (finished)
 <br>
 https://vuepwa-b0048.web.app/#/ (will be modified within the next two days, )
 <br>
