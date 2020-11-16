@@ -1,4 +1,5 @@
 <?php 
+include_once('../vendor/autoload.php');
 
 class Dblogger {
 
@@ -16,6 +17,13 @@ class Dblogger {
     function setaction($action) { $this->action = $action; }
     function getaction() { return $this->action; }
 
+
+    public function __construct() {
+        $db = new database;
+        $this->dbConn = $db->connect();
+        $this->validator = new Validator();
+    }
+
     public function addLog(){
         
         try {
@@ -31,19 +39,14 @@ class Dblogger {
 			$sql = 'INSERT INTO logs (ip, browser, action) VALUES(:ip, :browser, :action )';
 
 			$stmt = $this->dbConn->prepare($sql);
-			$stmt->bindValue(':ip', $this->ip);
-			$stmt->bindValue(':browser', $this->browser);
-            $stmt->bindValue(':action', $this->action);
-
-			if($stmt->execute()) {
-				return true;
-			} else {
-				return false;
-			}
-
+			$stmt->bindParam(':ip', $this->ip);
+			$stmt->bindParam(':browser', $this->browser);
+            $stmt->bindParam(':action', $this->action);
+			$stmt->execute();
+	
     
         }catch(Exception $e){
-            echo $e;
+            
         }
 
 
