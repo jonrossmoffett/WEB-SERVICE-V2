@@ -120,11 +120,13 @@ include_once('jwt.php');
                 echo "reached breakpont 6";
             }else{
                 echo "reached breakpont 7";
-                $sql = 'SELECT * FROM role_user';
+                $sql = 'SELECT * FROM role_user WHERE user_id = :id';
                 $stmt = $this->dbConn->prepare($sql);
-
+                echo " bind param ";
+                $stmt->bindParam(':id',  $this->id);
+                echo " bind param after  ";
                 $stmt->execute();
-                $user = $stmt->fetch();
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 $role = $user['role_id'];
 
