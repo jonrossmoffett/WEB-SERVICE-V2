@@ -124,7 +124,7 @@ include_once('jwt.php');
                 $stmt = $this->dbConn->prepare($sql);
                 $stmt->bindParam(':id',  $user['id']);
                 $stmt->execute();
-                $user = $stmt->fetch(PDO::FETCH_OBJ);
+                $user = $stmt->fetch();
 
                 $role = $user['role_id'];
 
