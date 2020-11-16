@@ -50,7 +50,7 @@ try
     $post = new Post;
     $posts = $post->search($getTitle,$uid);
     $response = json_encode([$posts]);
-    echo $response;exit;
+    $validator->responseSuccess(200,[$response]);
 }
 catch(Exception $e)
 {

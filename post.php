@@ -158,8 +158,6 @@
 			$title = "%" . $title . "%";
 
 			try {
-				echo "user id : " .$userId;
-				echo "title is  : " .$title;
 				$sql = "SELECT * FROM posts WHERE title LIKE :title AND user_id = :userId";
 				$stmt = $this->dbConn->prepare($sql);
 				$stmt->bindValue(':title', $title );
