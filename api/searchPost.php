@@ -36,7 +36,7 @@ $db = new database;
 $dbConn = $db->connect();
 
 $validator = new Validator;
-$validator->validateRequestType('GET');
+$validator->validateRequestType('GET','searchPost');
 
 $authCheck = new AuthTokenChecker;
 $token = $authCheck->getBearerToken();

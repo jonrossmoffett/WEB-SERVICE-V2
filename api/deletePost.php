@@ -30,7 +30,7 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
 
 
 $validator = new Validator;
-$validator->validateRequestType('DELETE');
+$validator->validateRequestType('DELETE','deletePost');
 $db = new database;
 $dbConn = $db->connect();
 

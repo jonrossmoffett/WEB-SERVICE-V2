@@ -44,7 +44,7 @@ $Auth = $headers['Authorization'];
 $Auth = ltrim($Auth,"Bearer"); */
 
 $validator = new Validator;
-$validator->validateRequestType('GET');
+$validator->validateRequestType('GET','getPosts');
 
 $authCheck = new AuthTokenChecker;
 $token = $authCheck->getBearerToken();

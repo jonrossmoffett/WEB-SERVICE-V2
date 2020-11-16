@@ -29,7 +29,7 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
         $dbConn = $db->connect();
         $validator = new Validator;
 
-        $validator->validateRequestType('POST');
+        $validator->validateRequestType('POST','login');
 
         $data = json_decode(file_get_contents("php://input"));
         

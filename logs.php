@@ -6,7 +6,7 @@ class Dblogger {
     public $ip;
     public $browser;
     public $action;
-
+    public $request;
 
     function setip($ip) { $this->ip = $ip; }
     function getip() { return $this->ip; }
@@ -17,6 +17,9 @@ class Dblogger {
     function setaction($action) { $this->action = $action; }
     function getaction() { return $this->action; }
 
+    
+    function setrequest($request) { $this->request = $request; }
+    function getrequest() { return $this->request; }
 
     public function __construct() {
         $db = new database;
@@ -27,21 +30,25 @@ class Dblogger {
     public function addLog(){
         
         try {
-            echo $this->ip . " \n";
+/*             echo $this->ip . " \n";
             echo $this->browser . "\n";
             echo $this->action . " \n";
 
             echo gettype($this->ip) . " \n";
             echo gettype($this->browser) . "\n";
-            echo gettype($this->action) . " \n";
-        
+            echo gettype($this->action) . " \n"; */
+            $created_at = date('Y-m-d H:i:s');
+            $updated_at = date('Y-m-d H:i:s');
             
-			$sql = 'INSERT INTO logs (ip, browser, action) VALUES(:ip, :browser, :action )';
+			$sql = 'INSERT INTO logs (ip, browser, action, request, created_at, updated_at) VALUES(:ip, :browser, :action, :request, :created_at, :updated_at )';
 
 			$stmt = $this->dbConn->prepare($sql);
 			$stmt->bindParam(':ip', $this->ip);
 			$stmt->bindParam(':browser', $this->browser);
             $stmt->bindParam(':action', $this->action);
+            $stmt->bindParam(':request', $this->request);
+            $stmt->bindParam(':created_at', $created_at);
+            $stmt->bindParam(':updated_at', $updated_at);
 			$stmt->execute();
 	
     
