@@ -14,7 +14,7 @@ date_default_timezone_set('Australia/Brisbane');
 
 	//rate limit 1000 calls per 24 hours
 	$rateLimiter = new RateLimiter($_SERVER["REMOTE_ADDR"]);
-	$limit = 1000;				    //connection per minutes
+	$limit = 5;				    //connection per minutes
 	$minutes = 1 * 1440;			//1 day
 	$seconds = floor($minutes * 1);	//retry after 1 day
 	try {
