@@ -136,7 +136,7 @@ include_once('jwt.php');
                     $sql = "select * from " . $this->tableName ;
                     $stmt = $this->dbConn->prepare($sql);
                     $stmt->execute();
-                    $users = $stmt->fetch(PDO::FETCH_OBJ);
+                    $users = $stmt->fetchAll();
                     echo "reached breakpont 9";
                     return $users;
                 }
