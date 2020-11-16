@@ -6,9 +6,9 @@ $createPostExample = [
 	"description" => "this is an example description"
 ];
 
-echo "Supported routes";
+echo "Supported routes \n";
 
-echo "https://phpwebservice.herokuapp.com/api/createPost";
+echo "https://phpwebservice.herokuapp.com/api/createPost \n";
 
 echo json_encode($createPostExample);
 
