@@ -5,6 +5,7 @@ include_once('../authToken.php');
 include_once('../post.php');
 include_once('../validator.php');
 include_once('../vendor/autoload.php');
+include_once('../user.php');
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
