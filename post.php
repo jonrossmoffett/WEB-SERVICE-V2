@@ -158,7 +158,7 @@
 			try {
 				echo "user id : " .$userId;
 				echo "title is  : " .$title;
-				$sql = "SELECT * FROM " . $this->tableName . " WHERE (title like % :title %) AND (user_id = :userId)";
+				$sql = "SELECT * FROM " . $this->tableName . " WHERE (title like " ."%". ":title" ."%".") AND (user_id = :userId)";
 				$stmt1 = $this->dbConn->prepare($sql);
 				$stmt1->bindParam(':title',  $title );
 				echo " reched hee ";
