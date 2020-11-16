@@ -111,7 +111,7 @@ include_once('jwt.php');
                  header($protocol.' '.$httpStatusCode.' '.$httpStatusMsg);
                 }
 
-                $response = json_encode(['error' => $httpStatusMsg]);
+                $response = json_encode(['error' => [$httpStatusMsg]]);
                 echo $response;exit;
                 
             }
