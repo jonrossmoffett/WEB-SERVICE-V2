@@ -161,7 +161,6 @@
 				$sql = "SELECT * FROM posts WHERE title LIKE :title AND user_id = :userId";
 				$stmt = $this->dbConn->prepare($sql);
 				$stmt->bindValue(':title', $title );
-				echo " reched hee ";
 				$stmt->bindParam(':userId', $userId);
 				$stmt->execute();
 				$post = $stmt->fetchAll(PDO::FETCH_CLASS);
