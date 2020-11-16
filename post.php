@@ -160,7 +160,7 @@
 			try {
 				echo "user id : " .$userId;
 				echo "title is  : " .$title;
-				$sql = 'SELECT * FROM posts WHERE (title like nad ) ';
+				$sql = 'SELECT * FROM posts WHERE title like nad ';
 				$stmt1 = $this->dbConn->prepare($sql);
 				//$stmt1->bindParam(':title', $title );
 				echo " reched hee ";
