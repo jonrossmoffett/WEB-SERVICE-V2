@@ -20,7 +20,7 @@
 <br>
 
 <h1>https://phpwebservice.herokuapp.com/api/deletePost</h1>
-<h2>Request Type: POST</h2>
+<h2>Request Type: DELETE</h2>
 <h2>headers: Authorization : JWT</h2>
 <h2>Arguements:</h2>
 <h3>"postId" : 1</h3>
