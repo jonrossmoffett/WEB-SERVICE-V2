@@ -1,10 +1,8 @@
 <?php
-
+include_once('rate.php');
 
 function runRateLimiter(){
 
-    date_default_timezone_set('Australia/Brisbane');
-	session_start();
 	
 	//rate limit 1000 calls per 24 hours
 	$rateLimiter = new RateLimiter($_SERVER["REMOTE_ADDR"]);

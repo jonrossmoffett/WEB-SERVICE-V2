@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
     checkDomainWhitelist($_SERVER["REMOTE_ADDR"]);
+
+    date_default_timezone_set('Australia/Brisbane');
+	session_start();
+
     runRateLimiter();
 
 if (isset($_SERVER["HTTP_ORIGIN"])) {
