@@ -1,7 +1,7 @@
 <?php
 
 function checkDomainWhitelist($domain) {
-    $whitelist       = array( '120.154.217.176', '10.63.208.77','10.73.248.115' );
+    $whitelist       = array( '120.154.217.176', '10.63.208.77','10.73.248.115', '10.7.155.197' );
     if( ! in_array( $domain, $whitelist ) ) { 
         echo $_SERVER["REMOTE_ADDR"] . "\n";
         echo "your domain is not allowed to access this api";
