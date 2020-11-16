@@ -27,13 +27,16 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
 
         $db = new database;
         $dbConn = $db->connect();
+        $validator = new Validator;
+
+        $validator->validateRequestType('POST');
 
         $data = json_decode(file_get_contents("php://input"));
         
         $email = $data->email;
         $password = $data->password;
 
-        $validator = new Validator;
+        
         $validator->validateParameter('Email',$email, EMAIL ,50,5,TRUE);
         $validator->validateParameter('Password',$password,PASSWORD,20,8,TRUE);
 
