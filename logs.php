@@ -25,9 +25,9 @@ class Dblogger {
 			$sql = 'INSERT INTO logs (ip, browser, action) VALUES(:ip, :browser, :action )';
 
 			$stmt = $this->dbConn->prepare($sql);
-			$stmt->bindParam(':ip', $this->ip);
-			$stmt->bindParam(':browser', $this->browser);
-            $stmt->bindParam(':action', $this->action);
+			$stmt->bindValue(':ip', $this->ip);
+			$stmt->bindValue(':browser', $this->browser);
+            $stmt->bindValue(':action', $this->action);
 
 			if($stmt->execute()) {
 				return true;
