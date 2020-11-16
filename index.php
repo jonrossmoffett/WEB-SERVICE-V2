@@ -85,5 +85,5 @@
 <h2>Request Type: GET</h2>
 <h2>headers: Authorization : JWT</h2>
 <h2>Arguements: </h2>
-<h3>title</h3>
+<h3>title</h3> 
  
