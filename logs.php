@@ -19,8 +19,14 @@ class Dblogger {
     public function addLog(){
         
         try {
-            $created_at = date('Y-m-d H:i:s');
-            $updated_at = date('Y-m-d H:i:s');
+            echo $this->ip . " \n";
+            echo $this->browser . "\n";
+            echo $this->action . " \n";
+
+            echo gettype($this->ip) . " \n";
+            echo gettype($this->browser) . "\n";
+            echo gettype($this->action) . " \n";
+        
             
 			$sql = 'INSERT INTO logs (ip, browser, action) VALUES(:ip, :browser, :action )';
 
