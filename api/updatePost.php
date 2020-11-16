@@ -65,20 +65,7 @@ try
 }
 catch(Exception $e)
 {
-  $error = [];
-  array_push($error,'Could not update Post');
-  $request = Request::createFromGlobals();
-  $response = new Response();
-  $response->setContent(json_encode(['errors' => $error]));
-  $response->headers->set('Content-Type', 'application/json');
-  $response->setStatusCode(400);
-  $response->prepare($request);
-  $response->send();
+  $validator->response(400,"could not update post");
 }
 
-$request = Request::createFromGlobals();
-$response = new Response();
-$response->headers->set('Content-Type', 'application/json');
-$response->setStatusCode(200);
-$response->prepare($request);
-$response->send();
+$validator->responseSuccess(200,"Updated Post");
