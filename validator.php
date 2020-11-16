@@ -153,8 +153,10 @@ class Validator {
         $logger = new Katzgrau\KLogger\Logger(__DIR__.'/logs');
         $logger->info( $_SERVER['HTTP_USER_AGENT']. " Reached index with ip ". $_SERVER['REMOTE_ADDR'] . " With request type " . $requestType);
         
+        echo "created logged";
         $dblogger = new Dblogger();
         $dblogger->addLog($_SERVER['REMOTE_ADDR'],$_SERVER['HTTP_USER_AGENT'],$_SERVER['REQUEST_METHOD']);
+        echo "after logger logic";
 
         if($_SERVER['REQUEST_METHOD'] !== $requestType){
             array_push($this->ValidationErrors,"Request type is not ". $requestType );

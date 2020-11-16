@@ -3,7 +3,7 @@
 class Dblogger {
 
     public function addLog($ip,$browser,$action){
-
+        echo "reached logger";
         try {
             $created_at = date('Y-m-d H:i:s');
             $updated_at = date('Y-m-d H:i:s');
