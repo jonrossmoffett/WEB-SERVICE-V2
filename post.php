@@ -164,7 +164,7 @@
 				echo " reched hee ";
 				$stmt1->bindValue(':userId', $userId);
 				$stmt1->execute();
-				$post = $stmt1->fetchAll(PDO::FETCH_CLASS);
+				$post = $stmt1->fetch(PDO::FETCH_ASSOC);
 				echo $post;
 				return $post;
 			}catch(Exception $e) {
