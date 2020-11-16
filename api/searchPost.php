@@ -48,8 +48,9 @@ $uid = $authCheck->validateToken($token);
 try 
 {
     $post = new Post;
-    $post->search($getTitle,$uid);
-    $validator->responseSuccess(200,$user);
+    $posts = $post->search($getTitle,$uid);
+    $response = json_encode([$posts]);
+    echo $response;exit;
 }
 catch(Exception $e)
 {
