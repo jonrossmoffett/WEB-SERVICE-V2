@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
-/* if (isset($_SERVER["HTTP_ORIGIN"])) {
+if (isset($_SERVER["HTTP_ORIGIN"])) {
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Max-Age: 0");
@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
     $response->prepare($request);
     $response->send();
   }
-  header("Content-Type: application/json; charset=UTF-8"); */
+  header("Content-Type: application/json; charset=UTF-8");
 
   $validator = new Validator;
   $validator->validateRequestType('GET');
