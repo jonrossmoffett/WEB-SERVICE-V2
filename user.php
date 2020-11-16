@@ -122,7 +122,7 @@ include_once('jwt.php');
                 echo "reached breakpont 7";
                 $sql = 'SELECT * FROM role_user WHERE user_id = :id';
                 $stmt = $this->dbConn->prepare($sql);
-                $stmt->bindParam(':id', $this->id);
+                $stmt->bindParam(':id',  $user['id']);
                 $stmt->execute();
                 $user = $stmt->fetch(PDO::FETCH_OBJ);
 
