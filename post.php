@@ -157,6 +157,7 @@
 
 			try {
 				echo "reached point 1";
+				echo "user id : " .$userId;
 				$sql = 'SELECT * FROM ' . $this->tableName . ' WHERE title like :title AND user_id = :userId';
 				echo "reached point 2 ";
 				$stmt1 = $this->dbConn->prepare($sql);
