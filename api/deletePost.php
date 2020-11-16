@@ -28,9 +28,6 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
   header("Content-Type: application/json; charset=UTF-8");
 
 
-  $request = Request::createFromGlobals();
-  $response = new Response();
-  echo($request->query);
 
 $validator = new Validator;
 $validator->validateRequestType('DELETE');
@@ -43,7 +40,8 @@ $data = json_decode(file_get_contents("php://input"));
 $Auth = $headers['Authorization'];
 $Auth = ltrim($Auth,"Bearer"); */
 
-$postId = $data->postId;
+//$postId = $data->postId;
+$postId = $_GET['postId'];
 $validator->validateParameter('PostId',$postId,INTEGER);
 
 
