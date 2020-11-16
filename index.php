@@ -24,8 +24,14 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
   }
   header("Content-Type: application/json; charset=UTF-8");
 
-  $validator = new Validator;
-  $validator->validateRequestType('GET');
-  $validator->response(401,'You may not access the index page');
+ try{
+	$validator = new Validator;
+	$validator->validateRequestType('GET');
+	$validator->response(401,'You may not access the index page');
+
+ }catch(Exception $e){
+	 echo $e;
+ }
+
 
 ?>
