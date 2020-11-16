@@ -155,6 +155,7 @@ class Validator {
         
         echo "created logged";
         $dblogger = new Dblogger();
+        echo "calling logger function add log ";
         $dblogger->addLog($_SERVER['REMOTE_ADDR'],$_SERVER['HTTP_USER_AGENT'],$_SERVER['REQUEST_METHOD']);
         echo "after logger logic";
 
