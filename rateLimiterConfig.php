@@ -19,8 +19,8 @@ function runRateLimiter(){
 		die (json_encode($data));
 	}
 
-	//rate limit 1 call per second
-	if (isset($_SESSION['LAST_CALL'])) {
+	//rate limit 1 call per second currently disabled, uncomment to re enable
+/* 	if (isset($_SESSION['LAST_CALL'])) {
 		$last = strtotime($_SESSION['LAST_CALL']);
 		$curr = strtotime(date("Y-m-d h:i:s"));
 		$sec =  abs($last - $curr);
@@ -30,7 +30,7 @@ function runRateLimiter(){
 		  die (json_encode($data));        
 		}
 	}
-	$_SESSION['LAST_CALL'] = date("Y-m-d h:i:s");
+	$_SESSION['LAST_CALL'] = date("Y-m-d h:i:s"); */
 
 
 }

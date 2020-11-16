@@ -6,14 +6,14 @@ include_once('../post.php');
 include_once('../validator.php');
 include_once('../vendor/autoload.php');
 include_once('../user.php');
-
+include_once('../rateLimiterConfig.php');
+include_once('../whitelist.php');
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/* header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
-header('Access-Control-Allow-Methods: GET');
-header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With'); */
+checkDomainWhitelist($_SERVER["REMOTE_ADDR"]);
+runRateLimiter();
+
 if (isset($_SERVER["HTTP_ORIGIN"])) {
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");
