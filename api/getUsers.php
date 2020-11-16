@@ -32,8 +32,6 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
   }
   header("Content-Type: application/json; charset=UTF-8");
 
-  echo "reached beginning";
-
 $db = new database;
 $dbConn = $db->connect();
 
