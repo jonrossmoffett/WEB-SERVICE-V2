@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 $rateLimiter = new RateLimiter($_SERVER["REMOTE_ADDR"]);
 $limit = 5;				    //connection per minutes
-$minutes = 1 * 1440;			//1 day
+$minutes = 1 ;			//1 day
 $seconds = floor($minutes * 1);	//retry after 1 day
 try {
     $rateLimiter->limitRequestsInMinutes($limit, $minutes);
