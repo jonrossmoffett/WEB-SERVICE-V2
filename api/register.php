@@ -52,7 +52,7 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
             $user->setEmailVerifiedAt(date('Y-m-d h:i:sa'));
             $user->setUpdatedAt(date('Y-m-d h:i:sa'));
             $user->insert();
-            $message = "inserted post into database";
+            $message = "Registered User";
         }catch(Exception $e){
             $message = $e->getMessage();
         }

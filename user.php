@@ -110,6 +110,9 @@ include_once('jwt.php');
                 $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0';
                  header($protocol.' '.$httpStatusCode.' '.$httpStatusMsg);
                 }
+
+                $response = json_encode(['error' => $httpStatusMsg]);
+                echo $response;exit;
                 
             }
 
