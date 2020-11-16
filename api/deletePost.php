@@ -28,6 +28,10 @@ if (isset($_SERVER["HTTP_ORIGIN"])) {
   header("Content-Type: application/json; charset=UTF-8");
 
 
+  $request = Request::createFromGlobals();
+  $response = new Response();
+  echo($request->query);
+
 $validator = new Validator;
 $validator->validateRequestType('DELETE');
 $db = new database;
