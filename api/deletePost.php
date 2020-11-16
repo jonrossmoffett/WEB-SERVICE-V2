@@ -33,14 +33,7 @@ $validator = new Validator;
 $validator->validateRequestType('DELETE');
 $db = new database;
 $dbConn = $db->connect();
-$data = json_decode(file_get_contents("php://input"));
 
-
-/* $headers = apache_request_headers();
-$Auth = $headers['Authorization'];
-$Auth = ltrim($Auth,"Bearer"); */
-
-//$postId = $data->postId;
 $postId = $_GET['postId'];
 $validator->validateParameter('PostId',$postId,INTEGER);
 
