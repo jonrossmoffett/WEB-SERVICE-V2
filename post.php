@@ -161,7 +161,7 @@
 				$sql = "SELECT * FROM " . $this->tableName . " WHERE (title like :title) AND (user_id = :userId)";
 				$stmt1 = $this->dbConn->prepare($sql);
 				$stmt1->bindParam(':title', '%' . $title . '%');
-				$stmt1->bindValue(':userId', $userId);
+				$stmt1->bindParam(':userId', $userId);
 				$stmt1->execute();
 				$post = $stmt1->fetchAll(PDO::FETCH_CLASS);
 				echo $post;
