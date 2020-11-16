@@ -158,11 +158,11 @@
 			try {
 				echo "user id : " .$userId;
 				echo "title is  : " .$title;
-				$sql = 'SELECT * FROM posts WHERE (title like :title ) AND (user_id = :userId)';
+				$sql = 'SELECT * FROM posts WHERE (title like :title ) ';
 				$stmt1 = $this->dbConn->prepare($sql);
 				$stmt1->bindValue(':title', '%'. $title . '%' );
 				echo " reched hee ";
-				$stmt1->bindParam(':userId', $userId);
+				//$stmt1->bindParam(':userId', $userId);
 				$stmt1->execute();
 				$post = $stmt1->fetch(PDO::FETCH_ASSOC);
 				echo $post;
