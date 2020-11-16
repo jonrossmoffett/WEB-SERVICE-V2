@@ -100,8 +100,8 @@ include_once('jwt.php');
             else
             {
                 //$this->validator->response(600,['Email is taken']);
-                
-                $httpStatusCode = 600;
+                CustomResponse(600,"Email is taken");
+/*                 $httpStatusCode = 600;
                 $httpStatusMsg  = 'Email is taken';
                 $phpSapiName    = substr(php_sapi_name(), 0, 3);
                 if ($phpSapiName == 'cgi' || $phpSapiName == 'fpm') {
@@ -112,7 +112,7 @@ include_once('jwt.php');
                 }
 
                 $response = json_encode(['error' => [$httpStatusMsg]]);
-                echo $response;exit;
+                echo $response;exit; */
                 
             }
 
