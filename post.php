@@ -154,6 +154,7 @@
 
 
 		public function search($title,$userId){
+			echo "reached point 1";
 			$sql = 'SELECT * FROM ' . $this->tableName . ' WHERE title like :title AND user_id = :userId';
 			$stmt1 = $this->dbConn->prepare($sql);
 			$stmt1->bindParam(':user_id', $userId);
