@@ -162,7 +162,7 @@
 				$stmt1 = $this->dbConn->prepare($sql);
 				$stmt1->bindValue(':title', '%'. $title . '%' );
 				echo " reched hee ";
-				$stmt1->bindValue(':userId', $userId);
+				$stmt1->bindParam(':userId', $userId);
 				$stmt1->execute();
 				$post = $stmt1->fetch(PDO::FETCH_ASSOC);
 				echo $post;
