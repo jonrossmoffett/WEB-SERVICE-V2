@@ -99,7 +99,18 @@ include_once('jwt.php');
             }
             else
             {
-                $this->validator->response(600,['Email is taken']);
+                //$this->validator->response(600,['Email is taken']);
+                
+                $httpStatusCode = 521;
+                $httpStatusMsg  = 'Email is taken';
+                $phpSapiName    = substr(php_sapi_name(), 0, 3);
+                if ($phpSapiName == 'cgi' || $phpSapiName == 'fpm') {
+                header('Status: '.$httpStatusCode.' '.$httpStatusMsg);
+                } else {
+                $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0';
+                 header($protocol.' '.$httpStatusCode.' '.$httpStatusMsg);
+                }
+                
             }
 
             
