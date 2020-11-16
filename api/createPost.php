@@ -9,6 +9,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
+$rateLimiter = new RateLimiter($_SERVER["REMOTE_ADDR"]);
+$limit = 1000;				    //connection per minutes
+$minutes = 1 * 1440;			//1 day
+$seconds = floor($minutes * 1);	//retry after 1 day
+try {
+    $rateLimiter->limitRequestsInMinutes($limit, $minutes);
+} catch (RateExceededException $e) {
+    header("HTTP/1.1 429 Too Many Requests");
+    header(sprintf("Retry-After: %d", $seconds));
+    $data = 'Rate Limit Exceeded ';
+    die (json_encode($data));
+}
+
+
 if (isset($_SERVER["HTTP_ORIGIN"])) {
     header("Access-Control-Allow-Origin: {$_SERVER["HTTP_ORIGIN"]}");
     header("Access-Control-Allow-Credentials: true");

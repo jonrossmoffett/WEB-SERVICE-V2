@@ -30,13 +30,7 @@ class Dblogger {
     public function addLog(){
         
         try {
-/*             echo $this->ip . " \n";
-            echo $this->browser . "\n";
-            echo $this->action . " \n";
 
-            echo gettype($this->ip) . " \n";
-            echo gettype($this->browser) . "\n";
-            echo gettype($this->action) . " \n"; */
             $created_at = date('Y-m-d H:i:s');
             $updated_at = date('Y-m-d H:i:s');
             
