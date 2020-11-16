@@ -46,8 +46,11 @@ $uid = $authCheck->validateToken($token);
 
 try 
 {
-    $user = new user;
-  
+    $user = new User;
+    $user->setId($uid);
+    $users = $user->GetUsers();
+    $json = json_encode($users);
+    $validator->response(200,$json);
 }
 catch(Exception $e)
 {

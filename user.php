@@ -103,7 +103,40 @@ include_once('jwt.php');
             }
 
             
-		}
+        }
+        
+        public function GetUsers(){
+            $sql = 'SELECT * FROM' . $this->tableName . 'WHERE id = :id';
+            $stmt = $this->dbConn->prepare($sql);
+            $stmt->bindParam(':id', $this->id);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_OBJ);
+
+            if(empty($user)){
+                $this->validator->response(400,"User id does not exist");
+            }else{
+                $sql = 'SELECT * FROM role_user WHERE user_id = :id';
+                $stmt = $this->dbConn->prepare($sql);
+                $stmt->bindParam(':id', $this->id);
+                $stmt->execute();
+                $user = $stmt->fetch(PDO::FETCH_OBJ);
+
+                $role = $user['role_id'];
+                
+                if($role == 1 | $role == 2){
+                    $sql = "select * from " . $this->tableName ;
+                    $stmt = $this->dbConn->prepare($sql);
+                    $stmt->execute();
+                    $users = $stmt->fetch(PDO::FETCH_OBJ);
+                    return $users;
+                }
+                else
+                {
+                    $this->validator->response(400,"Only administrators can retrieve this information");
+                }
+            }
+
+        }
 
 
         public function returnResponse($code, $data) {
