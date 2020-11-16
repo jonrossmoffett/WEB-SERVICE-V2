@@ -66,5 +66,5 @@ try
 }
 catch(Exception $e)
 {
-   echo $e->getmessage();exit;
+   echo json_encode($e->getmessage());exit;
 }
