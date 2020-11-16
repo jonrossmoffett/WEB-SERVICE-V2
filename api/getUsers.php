@@ -44,11 +44,16 @@ $token = $authCheck->getBearerToken();
 
 $uid = $authCheck->validateToken($token);
 
+echo "reached breakpont 2";
+
 try 
 {
     $user = new User;
+    echo "reached breakpont 3";
     $user->setId($uid);
+    echo "reached breakpont 4";
     $users = $user->GetUsers();
+    echo "reached breakpont 5";
     $json = json_encode($users);
     $validator->response(200,$json);
 }
