@@ -151,5 +151,17 @@
 			$response = json_encode(['response' =>['status'=>$code,"result" => $data]]);
 			echo $response;exit;
 		}
+
+
+		public function search($title,$userId){
+			$sql = 'SELECT * FROM ' . $this->tableName . ' WHERE title like :title AND user_id = :userId';
+			$stmt1 = $this->dbConn->prepare($sql);
+			$stmt1->bindParam(':user_id', $userId);
+			$stmt1->bindParam(':title', $title);
+            $stmt1->execute();
+            $post = $stmt1->fetchAll(PDO::FETCH_CLASS);
+			return $post;
+		}
+
 	}
  ?>
