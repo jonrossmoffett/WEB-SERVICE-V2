@@ -63,3 +63,12 @@
 <h2>Arguements:</h2>
 <h3>"email" : "jrmoffett1@gmail.com"</h3>
 <h3>"password" : "password1"</h3>
+
+
+<br>
+
+<h1>https://phpwebservice.herokuapp.com/api/getUsers</h1>
+<h2>Request Type: GET</h2>
+<h2>headers: Authorization : JWT</h2>
+<h2>Arguements:</h2>
+<h3>must have a role of admin</h3>
