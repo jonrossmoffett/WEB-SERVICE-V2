@@ -4,7 +4,7 @@ include_once('../jwt.php');
 include_once('../constants.php');
 include_once('../validator.php');
 include_once('../vendor/autoload.php');
-include_once('../rateLimiterConfig.php.php');
+include_once('../rateLimiterConfig.php');
 include_once('../whitelist.php');
 
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
     date_default_timezone_set('Australia/Brisbane');
 	session_start();
 
-    //runRateLimiter();
+    runRateLimiter();
 
 if (isset($_SERVER["HTTP_ORIGIN"])) {
     header("Access-Control-Allow-Origin: {$_SERVER["HTTP_ORIGIN"]}");
