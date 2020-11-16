@@ -156,7 +156,10 @@ class Validator {
         
 
         $dblogger = new Dblogger();
-        $dblogger->addLog($_SERVER['REMOTE_ADDR'],$_SERVER['HTTP_USER_AGENT'],$_SERVER['REQUEST_METHOD']);
+        $dblogger->setip($_SERVER['REMOTE_ADDR']);
+        $dblogger->setaction($_SERVER['REQUEST_METHOD']);
+        $dblogger->setbrowser($_SERVER['HTTP_USER_AGENT']);
+        $dblogger->addLog();
   
 
         if($_SERVER['REQUEST_METHOD'] !== $requestType){
