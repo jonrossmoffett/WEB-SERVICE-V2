@@ -2,6 +2,7 @@
 include_once('constants.php');
 include_once('../vendor/autoload.php');
 
+use Katzgrau\KLogger\Logger;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -150,7 +151,10 @@ class Validator {
     public function validateRequestType($requestType){
 
         $logger = new Katzgrau\KLogger\Logger(__DIR__.'/logs');
-	    $logger->info( $_SERVER['HTTP_USER_AGENT']. " Reached index with ip ". $_SERVER['REMOTE_ADDR'] . " With request type " . $requestType);
+        $logger->info( $_SERVER['HTTP_USER_AGENT']. " Reached index with ip ". $_SERVER['REMOTE_ADDR'] . " With request type " . $requestType);
+        
+        $dblogger = new Dblogger();
+        $dblogger->addLog($_SERVER['REMOTE_ADDR'],$_SERVER['HTTP_USER_AGENT'],$_SERVER['REQUEST_METHOD']);
 
         if($_SERVER['REQUEST_METHOD'] !== $requestType){
             array_push($this->ValidationErrors,"Request type is not ". $requestType );
