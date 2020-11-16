@@ -156,9 +156,13 @@
 		public function search($title,$userId){
 			echo "reached point 1";
 			$sql = 'SELECT * FROM ' . $this->tableName . ' WHERE title like :title AND user_id = :userId';
+			echo "reached point 2 ";
 			$stmt1 = $this->dbConn->prepare($sql);
+			echo "reached point 3 ";
 			$stmt1->bindParam(':user_id', $userId);
+			echo "reached point 4 ";
 			$stmt1->bindParam(':title', $title);
+			echo "reached point 5 ";
             $stmt1->execute();
             $post = $stmt1->fetchAll(PDO::FETCH_CLASS);
 			return $post;
