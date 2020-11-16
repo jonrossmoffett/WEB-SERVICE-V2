@@ -115,7 +115,7 @@ include_once('customResponseCode.php');
 
 
             if(empty($user)){
-                $this->validator->response(400,"User id does not exist");
+                CustomResponse(603,"User does not exist");
             }else{
 
                 $sql = 'SELECT * FROM role_user WHERE user_id = :id';
@@ -155,8 +155,7 @@ include_once('customResponseCode.php');
 
 
             if(empty($user)){
-                $this->validator->response(400,"User id does not exist");
-
+                CustomResponse(603,"User does not exist");
             }else{
 
                 $sql = 'SELECT * FROM role_user WHERE user_id = :id';
@@ -177,11 +176,14 @@ include_once('customResponseCode.php');
                     $stmt->bindParam(':id',  $getId);
                     $stmt->execute();
                     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                    if(empty($user)){
+                        CustomResponse(603,"User does not exist");
+                    }
                     return $user;
                 }
                 else
                 {
-                    $this->validator->response(400,"Only administrators can retrieve this information");
+                    CustomResponse(601,"Only administrators");
                 }
             }
 
