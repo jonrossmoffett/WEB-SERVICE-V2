@@ -49,8 +49,7 @@ try
 {
     $post = new Post;
     $posts = $post->search($getTitle,$uid);
-    $response = json_encode([$posts]);
-    $validator->responseSuccess(200,$response);
+    $validator->responseSuccess(200,$posts);
 }
 catch(Exception $e)
 {
