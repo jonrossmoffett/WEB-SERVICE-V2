@@ -54,7 +54,7 @@ try
     $user->setId($uid);
     echo "reached breakpont 4";
     $users = $user->GetUsers();
-    echo "reached breakpont 5";
+    
     $json = json_encode($users);
     $validator->response(200,$json);
 }
