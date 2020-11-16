@@ -106,43 +106,40 @@ include_once('jwt.php');
         }
         
         public function GetUsers(){
-            echo "reached";
+
             $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE id = :id';
             $stmt = $this->dbConn->prepare($sql);
             $stmt->bindParam(':id', $this->id);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_OBJ);
 
-            echo "reached breakpont 5";
 
             if(empty($user)){
                 $this->validator->response(400,"User id does not exist");
-                echo "reached breakpont 6";
+
             }else{
-                echo "reached breakpont 7";
+
                 $sql = 'SELECT * FROM role_user WHERE user_id = :id';
                 $stmt = $this->dbConn->prepare($sql);
-                echo " bind param ";
+
                 $stmt->bindParam(':id',  $this->id);
-                echo " bind param after  ";
+
                 $stmt->execute();
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 $role = $user['role_id'];
 
-                echo "reached breakpont 8";
+
 
                 if($role == 1 | $role == 2){
                     $sql = "select * from " . $this->tableName ;
                     $stmt = $this->dbConn->prepare($sql);
                     $stmt->execute();
                     $users = $stmt->fetchAll(PDO::FETCH_CLASS);
-                    echo "reached breakpont 9";
                     return $users;
                 }
                 else
                 {
-                    echo "reached breakpont 10";
                     $this->validator->response(400,"Only administrators can retrieve this information");
                 }
             }

@@ -45,19 +45,15 @@ $token = $authCheck->getBearerToken();
 
 $uid = $authCheck->validateToken($token);
 
-echo "reached breakpont 2";
-
 try 
 {
     $user = new User;
-    echo "reached breakpont 3";
     $user->setId($uid);
-    echo "reached breakpont 4";
     $users = $user->GetUsers();
     
     $validator->responseSuccess(200,$users);
 }
 catch(Exception $e)
 {
-   echo $e->getmessage();exit;
+  $validator->response(400,'there was an error processing your request');
 }
