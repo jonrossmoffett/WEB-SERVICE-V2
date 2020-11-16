@@ -55,7 +55,7 @@ try
     echo "reached breakpont 4";
     $users = $user->GetUsers();
     
-    $validator->responseSuccess(200,$json);
+    $validator->responseSuccess(200,$users);
 }
 catch(Exception $e)
 {
