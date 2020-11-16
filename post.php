@@ -160,7 +160,7 @@
 				echo "title is  : " .$title;
 				$sql = 'SELECT * FROM posts WHERE (title like :title ) ';
 				$stmt1 = $this->dbConn->prepare($sql);
-				$stmt1->bindValue(':title', '%'. $title . '%' );
+				$stmt1->bindParam(':title', 'nad' );
 				echo " reched hee ";
 				//$stmt1->bindParam(':userId', $userId);
 				$stmt1->execute();
