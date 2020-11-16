@@ -4,10 +4,22 @@ include_once('../jwt.php');
 include_once('../constants.php');
 include_once('../validator.php');
 include_once('../vendor/autoload.php');
+include_once('../rate.php');
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-
+$rateLimiter = new RateLimiter($_SERVER["REMOTE_ADDR"]);
+$limit = 5;				    //connection per minutes
+$minutes = 1 * 1440;			//1 day
+$seconds = floor($minutes * 1);	//retry after 1 day
+try {
+    $rateLimiter->limitRequestsInMinutes($limit, $minutes);
+} catch (RateExceededException $e) {
+    header("HTTP/1.1 429 Too Many Requests");
+    header(sprintf("Retry-After: %d", $seconds));
+    $data = 'Rate Limit Exceeded ';
+    die (json_encode($data));
+}
 
 
 if (isset($_SERVER["HTTP_ORIGIN"])) {
