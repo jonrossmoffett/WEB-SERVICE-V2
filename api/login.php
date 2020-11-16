@@ -20,7 +20,6 @@ date_default_timezone_set('Australia/Brisbane');
 	try {
 		$rateLimiter->limitRequestsInMinutes($limit, $minutes);
 	} catch (RateExceededException $e) {
-		$logger->debug( $_SERVER['HTTP_USER_AGENT']. " Reached index with ip ". $_SERVER['REMOTE_ADDR'] . " Has been rate limit blocked, 1000 requests per day");
 		header("HTTP/1.1 429 Too Many Requests");
 		header(sprintf("Retry-After: %d", $seconds));
 		$data = 'Rate Limit Exceeded ';
