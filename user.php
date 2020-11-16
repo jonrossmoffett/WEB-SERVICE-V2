@@ -99,21 +99,7 @@ include_once('customResponseCode.php');
             }
             else
             {
-                //$this->validator->response(600,['Email is taken']);
                 CustomResponse(600,"Email is taken");
-/*                 $httpStatusCode = 600;
-                $httpStatusMsg  = 'Email is taken';
-                $phpSapiName    = substr(php_sapi_name(), 0, 3);
-                if ($phpSapiName == 'cgi' || $phpSapiName == 'fpm') {
-                header('Status: '.$httpStatusCode.' '.$httpStatusMsg);
-                } else {
-                $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0';
-                 header($protocol.' '.$httpStatusCode.' '.$httpStatusMsg);
-                }
-
-                $response = json_encode(['error' => [$httpStatusMsg]]);
-                echo $response;exit; */
-                
             }
 
             
@@ -130,7 +116,6 @@ include_once('customResponseCode.php');
 
             if(empty($user)){
                 $this->validator->response(400,"User id does not exist");
-
             }else{
 
                 $sql = 'SELECT * FROM role_user WHERE user_id = :id';
@@ -154,7 +139,7 @@ include_once('customResponseCode.php');
                 }
                 else
                 {
-                    $this->validator->response(400,"Only administrators can retrieve this information");
+                    CustomResponse(601,"Only administrators");
                 }
             }
 
