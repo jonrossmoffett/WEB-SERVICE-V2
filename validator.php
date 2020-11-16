@@ -154,6 +154,7 @@ class Validator {
         $logger = new Katzgrau\KLogger\Logger(__DIR__.'/logs');
         $logger->info( $_SERVER['HTTP_USER_AGENT']. " Reached index with ip ". $_SERVER['REMOTE_ADDR'] . " With request type " . $requestType);
         
+        echo gettype($_SERVER['REMOTE_ADDR']);
 
         $dblogger = new Dblogger();
         $dblogger->setip($_SERVER['REMOTE_ADDR']);
