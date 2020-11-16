@@ -3,7 +3,7 @@
 class Dblogger {
 
     public function addLog($ip,$browser,$action){
-        echo "reached logger";
+        
         try {
             $created_at = date('Y-m-d H:i:s');
             $updated_at = date('Y-m-d H:i:s');
@@ -15,6 +15,8 @@ class Dblogger {
             $stmt->bindParam(':action', $action);
             $stmt->bindParam(':created_at', $created_at);
             $stmt->bindParam(':updated_at', $updated_at);
+            $stmt->execute();
+
     
         }catch(Exception $e){
             echo $e;
