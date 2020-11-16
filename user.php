@@ -107,7 +107,7 @@ include_once('jwt.php');
         
         public function GetUsers(){
             echo "reached";
-            $sql = 'SELECT * FROM' . $this->tableName . 'WHERE id = :id';
+            $sql = 'SELECT * FROM ' . $this->tableName . 'WHERE id = :id';
             $stmt = $this->dbConn->prepare($sql);
             $stmt->bindParam(':id', $this->id);
             $stmt->execute();
