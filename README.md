@@ -30,3 +30,10 @@ https://phpwebservice.herokuapp.com/ (might be modified slighly)
 https://vuepwa-b0048.web.app/#/ (will be modified within the next two days, )
 <br>
 https://fast-waters-78208.herokuapp.com/ (finished)
+
+<br>
+docker commands
+<br>
+docker build -t my-webservice .
+<br>
+docker run -dit --name my-webservice-app -p 8080:80 my-webservice

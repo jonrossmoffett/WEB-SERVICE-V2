@@ -7,19 +7,6 @@ use Katzgrau\KLogger\Logger;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-if (isset($_SERVER["HTTP_ORIGIN"])) {
-    header("Access-Control-Allow-Origin: {$_SERVER["HTTP_ORIGIN"]}");
-    header("Access-Control-Allow-Credentials: true");
-    header("Access-Control-Max-Age: 0");
-    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With,Referer,User-Agent,Access-Control-Allow-Origin');
-    http_response_code(200);
-  }
-  if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
-    if (isset($_SERVER["HTTP_ACCESS_CONTROL_REQUEST_METHOD"])) header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-    //if (isset($_SERVER["HTTP_ACCESS_CONTROL_REQUEST_HEADERS"])) header("Access-Control-Allow-Headers: {" . $_SERVER["HTTP_ACCESS_CONTROL_REQUEST_HEADERS"] ."}");
-    http_response_code(200);
-  }
-  header("Content-Type: application/json; charset=UTF-8");
 
 class Validator {
 
@@ -151,8 +138,6 @@ class Validator {
 
     public function validateRequestType($requestType,$action){
 
-        $logger = new Katzgrau\KLogger\Logger(__DIR__.'/logs');
-        $logger->info( $_SERVER['HTTP_USER_AGENT']. " Reached index with ip ". $_SERVER['REMOTE_ADDR'] . " With request type " . $requestType);
         
         $dblogger = new Dblogger();
         $dblogger->setip($_SERVER['REMOTE_ADDR']);
@@ -163,13 +148,12 @@ class Validator {
   
 
         if($_SERVER['REQUEST_METHOD'] !== $requestType){
-            array_push($this->ValidationErrors,"Request type is not ". $requestType );
-            $this->isValidationError = true;
+            /* array_push($this->ValidationErrors,"Request type is not ". $requestType );
+            $this->isValidationError = true; */
+            $this->response(405,"Method not allowed");
+            exit;
         }
         
-        if($this->isValidationError == true){
-            $this->response(400, $this->ValidationErrors);
-        }
 
         return;
     }

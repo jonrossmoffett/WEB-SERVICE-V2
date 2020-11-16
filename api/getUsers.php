@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 checkDomainWhitelist($_SERVER["REMOTE_ADDR"]);
-runRateLimiter();
+//runRateLimiter();
 
 if (isset($_SERVER["HTTP_ORIGIN"])) {
     header("Access-Control-Allow-Origin: *");
